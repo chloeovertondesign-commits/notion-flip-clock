@@ -1,7 +1,7 @@
 :root{
   /* defaults (override via URL params) */
   --page: #ffffff;
-  --panel-bg: #ffcfe0;
+  --panel-bg: #ff6b58;
   --text: #fff0f5;
   --line: rgba(255,255,255,0.9);
 
