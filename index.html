@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notion Flip Clock</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="clock" aria-label="Clock">
+        <div class="panel" id="hours">
+          <div class="value" data-value>00</div>
+          <div class="midline" aria-hidden="true"></div>
+          <div class="label left" id="ampm">AM</div>
+        </div>
+
+        <div class="panel" id="mins">
+          <div class="value" data-value>00</div>
+          <div class="midline" aria-hidden="true"></div>
+          <div class="label right" id="weekday">MONDAY</div>
+        </div>
+      </section>
+
+      <!-- Optional: hide this whole footer by adding ?ui=0 -->
+      <footer class="hint" id="hint">
+        <span>Colours via URL:</span>
+        <code>?bg=%23ffcfe0&text=%23fff0f5&line=%23ffffff</code>
+      </footer>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
