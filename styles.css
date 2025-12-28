@@ -1,47 +1,55 @@
+/* ---------- reset (kills default browser padding) ---------- */
+html,
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+*{ box-sizing: border-box; }
+
+/* ---------- theme tokens ---------- */
 :root{
-  /* defaults (override via URL params) */
   --page: #ffffff;
   --panel-bg: #ff6b58;
   --text: #ffc7b1;
   --line: rgba(255,255,255,0.9);
 
-  --radius-outer: 28px;
   --radius-inner: 20px;
 
-  --w: 400px;
-  --h: 220px;
-
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
 }
 
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
+/* ---------- layout ---------- */
 body{
-  margin: 0;
   background: var(--page);
   font-family: var(--font);
   display: grid;
-  place-items: start;
+  place-items: center;
 }
 
+/* This is the full-bleed container inside the Notion iframe */
 .wrap{
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
-  padding: 0;
 }
 
+/* ---------- clock ---------- */
+/* Fills the embed width, keeps proportions */
 .clock{
-  width: min(92vw, 720px);
-  aspect-ratio: 27 / 20; /* keeps the 270x200 proportions */
+  width: 100%;
+  max-width: 900px;            /* increase/decrease to taste */
+  aspect-ratio: 27 / 20;       /* based on original 270x200 */
   height: auto;
 
   display: flex;
-  gap: clamp(10px, 2.2vw, 18px);
-  border-radius: var(--radius-outer);
+  gap: clamp(10px, 2vw, 18px);
 }
 
+/* Panels fill the clock’s height */
 .panel{
   position: relative;
   flex: 1;
@@ -55,6 +63,7 @@ body{
   font-weight: 800;
 }
 
+/* Big numbers scale with the embed */
 .value{
   font-size: clamp(5.5rem, 22vw, 10rem);
   line-height: 1;
@@ -64,7 +73,7 @@ body{
   transform: translateY(2px);
 }
 
-/* centre line */
+/* Centre divider line */
 .midline{
   position: absolute;
   top: 50%;
@@ -75,7 +84,7 @@ body{
   z-index: 3;
 }
 
-/* labels */
+/* PM + weekday labels */
 .label{
   position: absolute;
   bottom: clamp(10px, 2vw, 16px);
@@ -87,32 +96,14 @@ body{
 .label.left{ left: 12px; }
 .label.right{ right: 12px; }
 
-/* flip animation */
+/* ---------- flip animation ---------- */
 .value.flip{
   animation: flip 320ms ease-in-out;
   transform-origin: 50% 55%;
 }
+
 @keyframes flip{
   0%{ transform: translateY(2px) rotateX(0deg); }
   49%{ transform: translateY(2px) rotateX(-80deg); }
   100%{ transform: translateY(2px) rotateX(0deg); }
-}
-
-.hint{
-  margin-top: 14px;
-  font-size: 12px;
-  opacity: 0.7;
-  display: flex;
-  gap: 8px;
-  align-items: centre;
-  flex-wrap: wrap;
-}
-.hint code{
-  background: rgba(0,0,0,0.06);
-  padding: 3px 6px;
-  border-radius: 8px;
-}
-.wrap{
-  transform-origin: top left;
-  transform: scale(0.85);
 }
