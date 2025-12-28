@@ -33,8 +33,10 @@ body{
 }
 
 .clock{
-  width: var(--w);
-  height: var(--h);
+  width: min(100%, var(--w));
+  aspect-ratio: 27 / 20; /* based on 270x200 */
+  height: auto;
+
   display: flex;
   gap: 10px;
   border-radius: var(--radius-outer);
@@ -54,13 +56,14 @@ body{
 }
 
 .value{
-  font-size: 8rem;
+  font-size: clamp(3.5rem, 18vw, 8rem);
   line-height: 1;
   letter-spacing: -0.03em;
   position: relative;
   z-index: 2;
   transform: translateY(2px);
 }
+
 
 /* centre line */
 .midline{
